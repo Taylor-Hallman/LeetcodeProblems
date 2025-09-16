@@ -1,7 +1,10 @@
-#include "AddBinary.h"
+#include "PalindromeNumber.h"
 #include <iostream>
 
 int main() {
 	Solution s;
-	std::cout << s.addBinary("1010", "1011");
+	std::cout << s.isPalindrome(0) << std::endl;
+	std::cout << s.isPalindrome(121) << std::endl;
+	std::cout << s.isPalindrome(-121) << std::endl;
+	std::cout << s.isPalindrome(10) << std::endl;
 }
