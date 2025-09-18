@@ -10,10 +10,10 @@ public:
 
     int solve(std::vector<int>& v, int left, int right, int target) {
         if (right < left) {
-            int result = std::min(left, (int)v.size() - 1);
-            while (target <= v[result])
-                result--;
-            return result + 1;
+            int i = std::min(left, (int)v.size() - 1);
+            while (target <= v[i])
+                i--;
+            return i + 1;
         }
         int mid = (left + right) / 2;
         if (target < v[mid])
