@@ -18,26 +18,28 @@ struct TreeNode {
 
 		int size = nodeVals.size();
 		TreeNode* root = new TreeNode(nodeVals[0].value());
-		std::queue<std::tuple<TreeNode*, int, int>> q;
-		q.push(std::make_tuple(root, 0, 0));
-		std::vector<int> lostBranches;
+		std::queue<std::tuple<TreeNode*, int>> q;
+		q.push(std::make_tuple(root, 0));
+		int lostNodes = 0;
+		int prevLevel = 0;
 		while (!q.empty()) {
-			auto [node, index, level] = q.front();
+			auto [node, index] = q.front();
 			q.pop();
-			int totalLost = 0;
-			for (int lostLevel : lostBranches)
-				totalLost += (level - lostLevel) * 2;
-			int leftIndex = index * 2 + 1 - totalLost, rightIndex = index * 2 + 2 - totalLost;
+			if (!node) {
+				lostNodes += 2;
+				continue;
+			}
+			int leftIndex = index * 2 + 1 - lostNodes, rightIndex = index * 2 + 2 - lostNodes;
 			if (leftIndex < nodeVals.size() && nodeVals[leftIndex].has_value()) {
 				node->left = new TreeNode(nodeVals[leftIndex].value());
-				q.push(std::make_tuple(node->left, leftIndex, level + 1));
+				q.push(std::make_tuple(node->left, leftIndex));
 			}
-			else lostBranches.push_back(level + 1);
+			else q.push(std::make_tuple(nullptr, leftIndex));
 			if (rightIndex < nodeVals.size() && nodeVals[rightIndex].has_value()) {
 				node->right = new TreeNode(nodeVals[rightIndex].value());
-				q.push(std::make_tuple(node->right, rightIndex, level + 1));
+				q.push(std::make_tuple(node->right, rightIndex));
 			}
-			else lostBranches.push_back(level + 1);
+			else q.push(std::make_tuple(nullptr, rightIndex));
 		}
 		return root;
 	}
