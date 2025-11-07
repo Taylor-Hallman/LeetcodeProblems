@@ -12,7 +12,6 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 	TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 
-	// WIP, not working properly atm
 	static TreeNode* buildTree(std::vector<std::optional<int>> nodeVals) {
 		if (nodeVals.empty() || !nodeVals[0].has_value()) return nullptr;
 
@@ -21,7 +20,6 @@ struct TreeNode {
 		std::queue<std::tuple<TreeNode*, int>> q;
 		q.push(std::make_tuple(root, 0));
 		int lostNodes = 0;
-		int prevLevel = 0;
 		while (!q.empty()) {
 			auto [node, index] = q.front();
 			q.pop();

@@ -1,0 +1,8 @@
+x64/
+.vs/
+Leetcode/x64/
+Leetcode/enc_temp_folder/
+*.sln
+*.vcxproj
+*.filters
+*.user
