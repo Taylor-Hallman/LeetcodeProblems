@@ -3,8 +3,6 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
-#include <list>
-#include <stack>
 #include <queue>
 
 using string = std::string;
