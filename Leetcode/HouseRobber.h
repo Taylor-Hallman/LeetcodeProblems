@@ -1,19 +1,10 @@
 #pragma once
 
-#include <algorithm>
-#include <cstdlib>
 #include <functional>
-#include <map>
-#include <stack>
-#include <unordered_map>
-#include <unordered_set>
-#include <utility>
 #include <vector>
 
 class Solution {
 public:
-    std::unordered_map<int, int> map;
-
     int rob(std::vector<int>& nums) {
         int n = nums.size();
 
