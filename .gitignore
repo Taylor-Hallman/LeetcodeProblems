@@ -1,8 +1,14 @@
 x64/
 .vs/
+.vscode/
 Leetcode/x64/
 Leetcode/enc_temp_folder/
+enc_temp_folder/
 *.sln
 *.vcxproj
 *.filters
 *.user
+build
+run
+main.cpp
+.clangd

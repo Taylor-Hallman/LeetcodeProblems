@@ -9,7 +9,7 @@ struct ListNode {
 	ListNode(int x) : val(x), next(nullptr) {}
 	ListNode(int x, ListNode* next) : val(x), next(next) {}
 
-	static ListNode* buildList(std::vector<int>& values) {
+	static ListNode* buildList(const std::vector<int>& values) {
 		if (values.empty())
 			return nullptr;
 		ListNode* head = new ListNode(values[0]);
