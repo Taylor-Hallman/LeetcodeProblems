@@ -105,36 +105,6 @@ class Solution {
             : x(x), y(y), n(node), word(word), visited(visited) {}
     };
 
-    void _backtrack(
-            std::vector<std::vector<char>>& board, 
-            const std::vector<string>& words,
-            std::unordered_set<string>& foundWords,
-            int m,
-            int n,
-            int x,
-            int y,
-            Node* node,
-            string word
-            )
-    {
-        if (!node)
-            return;
-        if (node->isCompleteWord()) {
-            foundWords.insert(word);
-            node->isComplete = false;
-        }
-        if (x < 0 || x >= n || y < 0 || y >= m || board[y][x] == '\0')
-            return;
-        char c = board[y][x];
-        board[y][x] = '\0';
-        word += c;
-        Node* child = node->getChild(c);
-        static const int dirs[4][2] = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0 , 1 } };
-        for (auto& d : dirs)
-            _backtrack(board, words, foundWords, m, n, x + d[0], y + d[1], child, word);
-        board[y][x] = c;
-    }
-
 public:
     std::vector<string> findWords(std::vector<std::vector<char>>& board, const std::vector<string>& words) {
         int m = board.size(), n = board[0].size();
